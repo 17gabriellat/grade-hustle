@@ -1,0 +1,436 @@
+/* 
+  Tema Visual: ELEGAN, MINIMALIS, CANTIK 
+  Tipografi: Inter (Sans-serif)
+*/
+
+:root {
+    --bg-color: #fcfcfc;
+    --surface-color: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --accent-color: #6366f1; /* Pastel-ish indigo */
+    --border-color: #eaeaea;
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+    --transition: all 0.3s ease;
+}
+
+/* Form inputs */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: var(--transition);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: var(--text-primary);
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    background-color: var(--surface-color);
+}
+
+/* Hide number input arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.scale-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.remove-btn {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    opacity: 0.5;
+    transition: var(--transition);
+}
+
+.remove-btn:hover {
+    opacity: 1;
+}
+
+/* Toast Notification */
+#notification-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 9999;
+}
+
+.toast {
+    background: var(--surface-color);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--accent-color);
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.toast.error { border-left-color: #ef4444; }
+.toast.success { border-left-color: #10b981; }
+
+/* Modal Elegant Prompt */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+.modal {
+    width: 100%;
+    max-width: 420px;
+    padding: 2rem;
+}
+
+/* Semester Card */
+.semester-card {
+    margin-bottom: 2rem;
+    border-top: 4px solid var(--accent-color);
+}
+.matkul-list {
+    margin-bottom: 1.5rem;
+}
+.matkul-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    background-color: var(--bg-color);
+    transition: var(--transition);
+}
+.matkul-item:hover {
+    border-color: var(--text-primary);
+}
+
+/* Extortionist Engine & Details */
+.matkul-details {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--border-color);
+    display: none; 
+    width: 100%;
+}
+.matkul-item.expanded .matkul-details {
+    display: block;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.extortionist-panel {
+    background: rgba(99, 102, 241, 0.04);
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: var(--accent-color);
+    line-height: 1.5;
+}
+
+.target-select {
+    padding: 0.4rem 0.75rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background: var(--surface-color);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-weight: 500;
+    transition: background-color 0.8s ease, color 0.8s ease;
+    cursor: pointer;
+}
+
+.comp-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr auto;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
+}
+
+.comp-input {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    width: 100%;
+    background: var(--surface-color);
+    color: var(--text-primary);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Base Container for Auth pages */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* --- App Layout (Sidebar + Main) --- */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 260px;
+    background-color: var(--surface-color);
+    border-right: 1px solid var(--border-color);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 2rem;
+    flex: 1;
+}
+
+.menu-item {
+    padding: 0.875rem 1rem;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.menu-item:hover {
+    background-color: rgba(99, 102, 241, 0.05);
+    color: var(--accent-color);
+}
+
+.menu-item.active {
+    background-color: rgba(99, 102, 241, 0.1);
+    color: var(--accent-color);
+}
+
+.btn, button, .menu-item {
+    transition: transform 0.1s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:active, button:active, .menu-item:active {
+    transform: scale(0.97);
+}
+
+.main-content {
+    flex: 1;
+    padding: 2.5rem 4rem;
+    max-width: 1100px;
+}
+
+/* --- View Toggle Logic --- */
+#profileView, #dashboardView, #simulatorView { display: none; }
+
+.view-profile #profileView { display: block; }
+.view-simulator #simulatorView { display: block; }
+.view-structure #dashboardView, 
+.view-grades #dashboardView, 
+.view-projection #dashboardView { display: block; }
+
+/* View: Structure */
+.view-structure .target-select { display: none !important; }
+.view-structure .input-score, .view-structure .label-score { display: none !important; }
+.view-structure .extortionist-panel { display: none !important; }
+
+/* View: Grades */
+.view-grades .target-select { display: none !important; }
+.view-grades .extortionist-panel { display: none !important; }
+.view-grades .btn-delete-sem, 
+.view-grades .btn-delete-matkul, 
+.view-grades .btn-delete-comp, 
+.view-grades .btn-add-matkul, 
+.view-grades .btn-add-comp, 
+.view-grades #addSemesterBtn { display: none !important; }
+.view-grades .input-nama, 
+.view-grades .input-bobot { 
+    pointer-events: none; 
+    border-color: transparent; 
+    background: transparent; 
+    padding-left: 0; 
+}
+
+/* View: Projection */
+.view-projection .btn-delete-sem, 
+.view-projection .btn-delete-matkul, 
+.view-projection .btn-delete-comp, 
+.view-projection .btn-add-matkul, 
+.view-projection .btn-add-comp, 
+.view-projection #addSemesterBtn { display: none !important; }
+.view-projection .comp-input { 
+    pointer-events: none; 
+    border-color: transparent; 
+    background: transparent; 
+    padding-left: 0; 
+}
+
+.elegant-title {
+    font-weight: 300;
+    font-size: 2.5rem;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+/* Card layout */
+.card {
+    background: var(--surface-color);
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    padding: 2.5rem; /* Lebih banyak whitespace */
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1.5rem;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    width: 100%;
+}
+
+.btn-google {
+    background-color: var(--surface-color);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.btn-google:hover {
+    background-color: #f9f9f9;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+}
+
+.btn-google svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Utilities (Fade & Smooth transitions) */
+.fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); filter: blur(4px); }
+    to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+/* Semester Accordion */
+.sem-content-container {
+    transition: all 0.3s ease;
+}
+.semester-card.collapsed .sem-content-container {
+    display: none;
+}
+.semester-card.collapsed .sem-chevron {
+    transform: rotate(-90deg);
+}
